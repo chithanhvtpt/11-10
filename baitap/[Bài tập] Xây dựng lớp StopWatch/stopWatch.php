@@ -1,99 +1,39 @@
 <?php
 
-class Phuongtrinhbac2
+
+class StopWatch
 {
-    private  $a;
-    private $b;
-    private  $c;
+    private $startTime;
+    private $endTime;
 
-    public function __construct($a, $b, $c)
+    public function __construct()
     {
-        $this->a = $a;
-        $this->b = $b;
-        $this->c = $c;
+        $this->startTime = microtime();
     }
 
-    public function getA()
+    private function getStart()
     {
-        return $this->a;
+        return $this->startTime;
     }
 
-    public function setA($a)
+    private function getEnd()
     {
-        $this->a = $a;
+        return $this->endTime;
     }
 
-    public function getB()
+    public function start()
     {
-        return $this->b;
+        return $this->startTime = microtime();
     }
 
-    public function setB($b)
+    public function stop()
     {
-        $this->b = $b;
+        $this->endTime = microtime();
     }
 
-    public function getC()
+    public function getElapsedTime()
     {
-        return $this->c;
+        return
     }
-
-    public function setC($c)
-    {
-        $this->c = $c;
-    }
-
-    public function checkABC()
-    {
-        if ($this->a == 0) {
-            if ($this->b == 0) {
-                die("phuong trinh vo nghiem");
-            } else {
-                echo("phuong trinh co 1 nghiem: " . " n= " . ((-$this->c) / $this->b));
-                die();
-            }
-
-        }
-
-
-    }
-
-    public function getDelta()
-    {
-        return (($this->b * $this->b) - (4 * $this->a * $this->c));
-    }
-
-    public function getN1()
-    {
-        return ((-$this->b) + sqrt($this->getDelta())) / (2 * $this->a);
-    }
-
-    public function getN2()
-    {
-        return ((-$this->b) - sqrt($this->getDelta())) / (2 * $this->a);
-    }
-
-    public function calculate()
-    {
-        $this->checkABC();
-        if ($this->getDelta() > 0) {
-            echo("phuong trinh co nghiem thu nhat la: " . $this->getN1() . "<br>");
-            echo("phuong trinh co nghiem thu hai la: " . $this->getN2());
-        } elseif ($this->getDelta() == 0) {
-            echo("phuong trinh co nghiem kep: n1 = n2 = " . $this->getN1());
-        } else {
-            echo "phuong trinh vo nghiem";
-        }
-    }
-
 }
-?>
-<?php
-include_once "Phuongtrinhbac2.php";
-$phuongtrinh = new Phuongtrinhbac2(0,0, 5);
-echo("he so thu nhat: " . $phuongtrinh->getA() . "<br>");
-echo("he so thu hai: " . $phuongtrinh->getB() . "<br>");
-echo("he so thu ba: " . $phuongtrinh->getC() . "<br>");
-echo(" delta = " . $phuongtrinh->getDelta()."<br>");
-$phuongtrinh->calculate();
-?>
+
